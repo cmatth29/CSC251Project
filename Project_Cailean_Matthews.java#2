@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Project_Cailean_Matthews {
-   public static void main(String[]args) {
+   public void main(String[]args) {
       int  policyNumber;
       String providerName;
       String patientFirstName;
@@ -12,7 +12,8 @@ public class Project_Cailean_Matthews {
       double patientWeight;
       Policy policy;
       
-      Scanner scnr = new Scanner(System.in); 
+      Scanner scnr = new Scanner(System.in);
+      policy = new Policy(); 
       
       System.out.print("Please Enter the Policy Number: ");
       policyNumber = scnr.nextInt();
@@ -32,20 +33,20 @@ public class Project_Cailean_Matthews {
       patientWeight = scnr.nextDouble();
       
       System.out.println();
-      
       policy = new Policy(policyNumber, providerName, patientFirstName, patientLastName, patientAge, patientSmokeStatus, patientHeight, patientWeight);
-      policy.setFee();
       
-      System.out.println("Policy Number: " + policy.getPolicyNum());
-      System.out.println("Provider Name: " + policy.getProvName());
-      System.out.println("Policyholder's First Name: " + policy.getFirstName());
-      System.out.println("Policyholder's Last Name: " + policy.getLastName());
-      System.out.println("Policyholder's Age : " + policy.getAge());
-      System.out.println("Policyholder's Smoking Status: " + policy.getSmokeStatus());
-      System.out.println("Policyholder's Height: " + policy.getHeight());
-      System.out.println("Policyholder's Weight: " + policy.getWeight());
-      System.out.println("Policyholder's BMI: " + policy.getBMI());
-      System.out.println("Policyholder's Price: $%.2f.%n" + policy.getTotalPrice());
+      
+      System.out.println("Policy Number: " + Policy.getPolicyNum);
+      System.out.println("Provider Name: " + Policy.getProvName);
+      System.out.println("Policyholder's First Name: " + Policy.getFirstName);
+      System.out.println("Policyholder's Last Name: " + Policy.getLastName);
+      System.out.println("Policyholder's Age : " + Policy.getAge);
+      System.out.println("Policyholder's Smoking Status: " + Policy.getSmokeStatus);
+      System.out.println("Policyholder's Height: " + Policy.getHeight);
+      System.out.println("Policyholder's : " + Policy.get);
+      System.out.println("Policyholder's Weight: " + Policy.getWeight);
+      System.out.println("Policyholder's BMI: " + Policy.getBMI);
+      System.out.println("Policyholder's Price: $%.2f.%n" + Policy.getTotalPrice);
    }
 
 
@@ -77,7 +78,7 @@ public class Project_Cailean_Matthews {
          totalPrice = 600.00;
       }
       
-      public Policy(int policyNumber, String providerName, String patientFirstName, String patientLastName,
+      public Policy(int  policyNumber, String providerName, String patientFirstName, String patientLastName,
       int patientAge, String patientSmokeStatus, int patientHeight, double patientWeight){
          policyNum = policyNumber;
          provName = providerName;
@@ -122,7 +123,7 @@ public class Project_Cailean_Matthews {
       }
       
       public void setBMI() {
-         BMI = (weight * 703)/(height * height);
+         BMI = (Policy.getWeight * 703)/(Policy.getHeight * Policy.getHeight);
       }
       
       public double getBMI() {
@@ -138,14 +139,14 @@ public class Project_Cailean_Matthews {
       }
       
       public void setTotalPrice() {
-         if (age >= 50) {
+         if (Policy.getAge >= 50) {
             totalPrice = totalPrice + 75;
          }
-         if  (smokeStatus == "smoker") {
+         if  (Policy.getSmokerStatus == "smoker") {
             totalPrice = totalPrice + 100;
          }
-         if (BMI >= 35) {
-            totalPrice = totalPrice = fee;
+         if (Policy.getBMI >= 35) {
+            totalPrice = totalPrice = Policy.setFee;
          }
       }
       
