@@ -10,8 +10,11 @@ public class Policy {
       private double BMI;
       private double fee;
       private double totalPrice;
+      private int smokerNum = 0;
+      private int nonSmokerNum = 0;
       
       
+      // Basic constructor if the user inputs no values
       public Policy() {
          policyNum = 0;
          provName = "Unknown";
@@ -25,18 +28,27 @@ public class Policy {
          totalPrice = 600.00;
       }
       
+      // Constructor
       public Policy(int policyNumber, String providerName, String patientFirstName, String patientLastName,
       int patientAge, String patientSmokeStatus, int patientHeight, double patientWeight){
+         
          policyNum = policyNumber;
          provName = providerName;
          firstName = patientFirstName;
          lastName = patientLastName;
          age = patientAge;
          smokeStatus = patientSmokeStatus;
+         if (smokeStatus.equals("smoker")){
+            smokerNum = 1;
+         } else {
+            nonSmokerNum = 1;
+         }
+         
          height = patientHeight;
          weight = patientWeight;
       }
       
+      // The following 8 methods are getters
       public int getPolicyNum() {
          return policyNum;
       }
@@ -69,31 +81,42 @@ public class Policy {
          return weight;
       }
       
+      public int getSmokerNum() {
+         return smokerNum;
+      }
+      
+      public int getNonSmokerNum() {
+         return nonSmokerNum;
+      }
+      
+      // setter and getter for BMI
       public void setBMI() {
-         BMI = (weight * 703)/(height * height);
+         BMI = 730 * ((getWeight())/(getHeight() * getHeight()));
       }
       
       public double getBMI() {
          return BMI;
       }
       
+      //setter and getter for the fee
       public void setFee() {
-         fee = (BMI - 35) * 20;
+            fee = (getBMI() - 35) * 20;
       }
       
       public double getFee(){
          return fee;
       }
       
+      //And lastly, the setter and getter for the total price
       public void setTotalPrice() {
-         if (age >= 50) {
+         if (getAge() > 50) {
             totalPrice = totalPrice + 75;
          }
-         if  (smokeStatus == "smoker") {
+         if  (smokeStatus.equals("smoker")) {
             totalPrice = totalPrice + 100;
          }
-         if (BMI >= 35) {
-            totalPrice = totalPrice = fee;
+         if (getBMI() > 35) {
+            totalPrice = totalPrice + fee;
          }
       }
       
