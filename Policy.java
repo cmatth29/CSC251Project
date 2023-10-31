@@ -26,6 +26,7 @@ public class Policy {
          weight = 0;
          fee = 0;
          totalPrice = 600.00;
+         
       }
       
       // Constructor
@@ -122,6 +123,11 @@ public class Policy {
       
       public double getTotalPrice() {
          return totalPrice;
+      }
+      
+      public String toString() {
+
+         polString = "Policy Number: " + policy.getPolicyNum() + "\nProvider Name: " + policy.getProvName() + "\nPolicyholder's First Name: " + policy.getFirstName() + "\nPolicyholder's Last Name: " + policy.getLastName() + "\nPolicyholder's Age : " + policy.getAge() + "\nPolicyholder's Smoking Status: " + policy.getSmokeStatus() + "\nPolicyholder's Height: " + policy.getHeight() + "\nPolicyholder's Weight: " + policy.getWeight() + "\nPolicyholder's BMI: " + policy.getBMI() + "\nPolicyholder's Price: %.2f", policy.getTotalPrice();
       }
       
       

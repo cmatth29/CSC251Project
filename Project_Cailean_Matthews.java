@@ -16,6 +16,7 @@ public class Project_Cailean_Matthews {
       static int i = 0;
       static int finalSmokerNum = 0;
       static int finalNonSmokerNum = 0;
+      static int policyAmt = 0;
 
    public static void main(String[]args) throws IOException {
       
@@ -40,6 +41,7 @@ public class Project_Cailean_Matthews {
          policy.setFee();
       
          policies.add(policy);
+         policyAmt++;
          finalSmokerNum = finalSmokerNum + policy.getSmokerNum();
          finalNonSmokerNum = finalNonSmokerNum + policy.getNonSmokerNum();
          policy.setBMI();
