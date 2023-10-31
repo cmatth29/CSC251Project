@@ -1,12 +1,6 @@
 public class Policy {
       private int  policyNum;
       private String provName;
-      private String firstName;
-      private String lastName;
-      private int age;
-      private String smokeStatus;
-      private int height;
-      private double weight;
       private double BMI;
       private double fee;
       private double totalPrice;
@@ -14,40 +8,30 @@ public class Policy {
       private int nonSmokerNum = 0;
       
       
+      PolicyHolder policyHolder;
       // Basic constructor if the user inputs no values
       public Policy() {
          policyNum = 0;
          provName = "Unknown";
-         firstName = "---";
-         lastName = "---";
-         age = 0;
-         smokeStatus = "non-smoker";
-         height = 0;
-         weight = 0;
          fee = 0;
          totalPrice = 600.00;
          
       }
       
       // Constructor
-      public Policy(int policyNumber, String providerName, String patientFirstName, String patientLastName,
-      int patientAge, String patientSmokeStatus, int patientHeight, double patientWeight){
+      public Policy(int policyNumber, String providerName, PolicyHolder policyHolder){
          
          policyNum = policyNumber;
          provName = providerName;
-         firstName = patientFirstName;
-         lastName = patientLastName;
-         age = patientAge;
-         smokeStatus = patientSmokeStatus;
-         if (smokeStatus.equals("smoker")){
-            smokerNum = 1;
+         this.policyHolder = policyHolder;
+         if (policyHolder.getSmokeStatus().equals("smoker")){
+            smokerNum++;
          } else {
-            nonSmokerNum = 1;
+            nonSmokerNum++;
          }
-         
-         height = patientHeight;
-         weight = patientWeight;
+         totalPrice = 600.00;
       }
+      
       
       // The following 8 methods are getters
       public int getPolicyNum() {
@@ -59,27 +43,27 @@ public class Policy {
       }
       
       public String getFirstName() {
-         return firstName;
+         return policyHolder.getFirstName();
       }
       
       public String getLastName() {
-         return lastName;
+         return policyHolder.getLastName();
       }
       
       public int getAge() {
-         return age;
+         return policyHolder.getAge();
       }
       
       public String getSmokeStatus() {
-         return smokeStatus;
+         return policyHolder.getSmokeStatus();
       }
       
       public int getHeight() {
-         return height;
+         return policyHolder.getHeight();
       }
       
       public double getWeight() {
-         return weight;
+         return policyHolder.getWeight();
       }
       
       public int getSmokerNum() {
@@ -92,7 +76,7 @@ public class Policy {
       
       // setter and getter for BMI
       public void setBMI() {
-         BMI = 730 * ((getWeight())/(getHeight() * getHeight()));
+         BMI = 703 * ((policyHolder.getWeight())/(policyHolder.getHeight() * policyHolder.getHeight()));
       }
       
       public double getBMI() {
@@ -113,7 +97,7 @@ public class Policy {
          if (getAge() > 50) {
             totalPrice = totalPrice + 75;
          }
-         if  (smokeStatus.equals("smoker")) {
+         if  (getSmokeStatus().equals("smoker")) {
             totalPrice = totalPrice + 100;
          }
          if (getBMI() > 35) {
@@ -127,7 +111,7 @@ public class Policy {
       
       public String toString() {
 
-         polString = "Policy Number: " + policy.getPolicyNum() + "\nProvider Name: " + policy.getProvName() + "\nPolicyholder's First Name: " + policy.getFirstName() + "\nPolicyholder's Last Name: " + policy.getLastName() + "\nPolicyholder's Age : " + policy.getAge() + "\nPolicyholder's Smoking Status: " + policy.getSmokeStatus() + "\nPolicyholder's Height: " + policy.getHeight() + "\nPolicyholder's Weight: " + policy.getWeight() + "\nPolicyholder's BMI: " + policy.getBMI() + "\nPolicyholder's Price: %.2f", policy.getTotalPrice();
+         return  String.format("Policy Number: " + getPolicyNum() + " \nProvider Name: " + getProvName() + policyHolder.toString() + " \nPolicyholder's BMI: %.2f", getBMI()) + String.format(" \nPolicyholder's Price: %.2f", getTotalPrice());
       }
       
       

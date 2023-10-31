@@ -37,30 +37,24 @@ public class Project_Cailean_Matthews {
          patientWeight = Integer.valueOf(objReader.readLine());
          objReader.readLine();
          
-         policy = new Policy(policyNumber, providerName, patientFirstName, patientLastName, patientAge, patientSmokeStatus, patientHeight, patientWeight);
-         policy.setFee();
+         PolicyHolder policyHolder = new PolicyHolder(patientFirstName, patientLastName, patientAge, patientSmokeStatus, patientHeight, patientWeight);
+         policy = new Policy(policyNumber, providerName, policyHolder);
+         
       
          policies.add(policy);
          policyAmt++;
          finalSmokerNum = finalSmokerNum + policy.getSmokerNum();
          finalNonSmokerNum = finalNonSmokerNum + policy.getNonSmokerNum();
          policy.setBMI();
+         policy.setFee();
          policy.setTotalPrice();
          
-         System.out.println("Policy Number: " + policy.getPolicyNum());
-         System.out.println("Provider Name: " + policy.getProvName());
-         System.out.println("Policyholder's First Name: " + policy.getFirstName());
-         System.out.println("Policyholder's Last Name: " + policy.getLastName());
-         System.out.println("Policyholder's Age : " + policy.getAge());
-         System.out.println("Policyholder's Smoking Status: " + policy.getSmokeStatus());
-         System.out.println("Policyholder's Height: " + policy.getHeight());
-         System.out.println("Policyholder's Weight: " + policy.getWeight());
-         System.out.println("Policyholder's BMI: " + policy.getBMI());
-         System.out.format("Policyholder's Price: %.2f", policy.getTotalPrice());
+         System.out.println(policy.toString());
          System.out.println();
       }
 
       System.out.println("The number of policies with a smoker is: " + finalSmokerNum);
       System.out.println("\nThe number of policies with a non-smoker is: " + finalNonSmokerNum);
+      System.out.println("\nThe number of policies is: " + policyAmt);
    }   
 }

@@ -1,5 +1,12 @@
 public class PolicyHolder {
 
+   protected String firstName;
+   protected String lastName;
+   protected int age;
+   protected String smokeStatus;
+   protected int height;
+   protected double weight;
+   
    public PolicyHolder() {
          firstName = "---";
          lastName = "---";
@@ -9,7 +16,7 @@ public class PolicyHolder {
          weight = 0;
    }
 
-   public PolicyHolder(String firstName, String lastName, int age, String smokeStatus, int height, int weight) {
+   public PolicyHolder(String firstName, String lastName, int age, String smokeStatus, int height, double weight) {
          this.firstName = firstName;
          this.lastName = lastName;
          this.age = age;
@@ -43,7 +50,10 @@ public class PolicyHolder {
    }
 
    public String toString() { 
-      polHolString = "Policyholder's First Name: " + policy.getFirstName() + "Policyholder's Last Name: " + policy.getLastName()"Policyholder's Age : " + policy.getAge() + "Policyholder's Smoking Status: " + policy.getSmokeStatus());"Policyholder's Height: " + policy.getHeight() + "Policyholder's Weight: " + policy.getWeight();
+      return String.format("\nPolicyholder's First Name: " + getFirstName() + 
+      " \nPolicyholder's Last Name: " + getLastName() + " \nPolicyholder's Age : " + 
+      getAge() + " \nPolicyholder's Smoking Status (Y/N): " + getSmokeStatus() + 
+      " \nPolicyholder's Height: " + getHeight() + " \nPolicyholder's Weight: " + getWeight());
    }
 
 
